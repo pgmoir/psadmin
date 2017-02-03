@@ -1,0 +1,24 @@
+{
+  "name": "psadmin",
+  "version": "1.0.0",
+  "description": "React and flux project based on Cory House Pluralsight course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pgmoir/psadmin.git"
+  },
+  "author": "pgmoir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pgmoir/psadmin/issues"
+  },
+  "homepage": "https://github.com/pgmoir/psadmin#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^2.2.0",
+    "gulp-open": "^1.0.0"
+  }
+}
