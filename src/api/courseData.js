@@ -1,33 +1,48 @@
 module.exports = {
-	courses: 
-	[
-		{
-			id: 'psc-0001',
-			title: 'Clean Code: Writing Code for Humans', 
-			author: 'Cory House',
-			category: 'Software Practices',
-			length: '3:10'
-		},	
-		{
-			id: 'psc-0002',
-			title: 'Architecting Applications in the Real World', 
-			author: 'Cory House',
-			category: 'Software Architecture',
-			length: '2:52'
-		},	
-		{
-			id: 'psc-0003',
-			title: 'Becoming an Outlier: Reprogramming the Developer Mind', 
-			author: 'Cory House',
-			category: 'Career',
-			length: '2:30'
-		},	
-		{
-			id: 'psc-0004',
-			title: 'Web Component Fundamentals', 
-			author: 'Cory House',
-			category: 'HTML5',
-			length: '5:10'
+	courses: [
+		{  
+			id: "clean-code",
+			title: "Clean Code: Writing Code for Humans",
+			watchHref: "http://www.pluralsight.com/courses/writing-clean-code-humans",
+			author: {  
+				id: "cory-house",
+				name: "Cory House"
+			},
+			length: "3:10",
+			category: "Software Practices"
+		},
+		{  
+			id: "architecture",
+			title: "Architecting Applications for the Real World",
+			watchHref: "http://www.pluralsight.com/courses/architecting-applications-dotnet",
+			author: {  
+				id: "cory-house",
+				name: "Cory House"
+			},
+			length: "2:52",
+			category: "Software Architecture"
+		},
+		{  
+			id: "career-reboot-for-developer-mind",
+			title: "Becoming an Outlier: Reprogramming the Developer Mind",
+			watchHref: "http://www.pluralsight.com/courses/career-reboot-for-developer-mind",
+			author: {  
+				id: "cory-house",
+				name: "Cory House"
+			},
+			length: "2:30",
+			category: "Career"
+		},
+		{  
+			id: "web-components-shadow-dom",
+			title: "Web Component Fundamentals",
+			watchHref: "http://www.pluralsight.com/courses/web-components-shadow-dom",
+			author: {  
+				id: "cory-house",
+				name: "Cory House"
+			},
+			length: "5:10",
+			category: "HTML5"
 		}
 	]
 };

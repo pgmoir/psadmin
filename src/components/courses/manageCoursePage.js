@@ -6,6 +6,7 @@ var CourseForm = require('./courseForm');
 var CourseActions = require('../../actions/courseActions');
 var CourseStore = require('../../stores/courseStore');
 var toastr = require('toastr');
+var _ = require('lodash');
 
 var ManageCoursePage = React.createClass({
     mixins: [
@@ -20,9 +21,13 @@ var ManageCoursePage = React.createClass({
         }
     },
 
+    getAuthors: function() {
+        return [{firstName: "Phil", lastName: "Moir", id: "phil-moir"}, {firstName: "Cory", lastName: "House", id: "cory-house"}];
+    },
+
     getInitialState: function() {
         return {
-            course: { id: '', title: '', author: '', category: '', length: '' },
+            course: { id: '', title: '', author: '', category: '', length: '', authors: this.getAuthors()},
             errors: {},
             dirty: false
         };  
@@ -31,7 +36,9 @@ var ManageCoursePage = React.createClass({
     componentWillMount: function() {
         var courseId = this.props.params.id; // from the path course courseId
         if (courseId) {
-            this.setState({course: CourseStore.getCourseById(courseId)});
+            var course = CourseStore.getCourseById(courseId);
+            course.authors = this.getAuthors();
+            this.setState({course: course});
         }
     },
 
@@ -56,8 +63,17 @@ var ManageCoursePage = React.createClass({
         return this.setState({course: this.state.course});
     },
 
+    getCourseWithAuthor: function() {
+        var author = _.find(this.state.course.authors, {id: this.state.course.authorId});
+        var course = this.state.course;
+        course.author = { id: author.id, name: author.firstName + ' ' + author.lastName };
+        return course;
+    },
+
     saveCourse: function(event) {
         event.preventDefault();
+
+        this.setState({course: this.getCourseWithAuthor()});
 
         if (!this.courseFormIsValid()) {
             return;

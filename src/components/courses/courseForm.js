@@ -2,6 +2,7 @@
 
 var React = require('react');
 var Input = require('../common/textInput');
+var Select = require('../common/textSelect');
 
 var CourseForm = React.createClass({
     propTypes: {
@@ -22,11 +23,12 @@ var CourseForm = React.createClass({
                     onChange={this.props.onChange}
                     error={this.props.errors.title} />
 
-                <Input name="author"
+                <Select name="authorId"
                     label="Author"
-                    value={this.props.course.author}
+                    value={this.props.course.author.id}
+                    options={this.props.course.authors}
                     onChange={this.props.onChange}
-                    error={this.props.errors.author} />
+                    error={this.props.errors.authorId} />
 
                 <Input name="category"
                     label="Category"

@@ -6,7 +6,7 @@ var _ = require('lodash');
 
 //This would be performed on the server in a real app. Just stubbing in.
 var _generateId = function(course) {
-	return 'psc-0005';
+	return course.title.replace(' ', '-');
 };
 
 var _clone = function(item) {
@@ -15,34 +15,31 @@ var _clone = function(item) {
 
 var CourseApi = {
 	getAllCourses: function() {
-		return _clone(courses); 
+		return _clone(courses);	
 	},
 
-	getCourseById: function(id) {
+	getCoursesById: function(id) {
 		var course = _.find(courses, {id: id});
 		return _clone(course);
 	},
-	
+
 	saveCourse: function(course) {
-		//pretend an ajax call to web api is made here
-		console.log('Pretend this just saved the course to the DB via AJAX call...');
-		
+		console.log('Imagine saving course via AJAX call...');
+
 		if (course.id) {
 			var existingCourseIndex = _.indexOf(courses, _.find(courses, {id: course.id})); 
-			courses.splice(existingCourseIndex, 1, course);
+			courses.splice(existingCourseIndex, 1, course); 
 		} else {
-			//Just simulating creation here.
-			//The server would generate ids for new courses in a real app.
-			//Cloning so copy returned is passed by value rather than by reference.
+			//just simulating creation here. This data 
+			//would be generated on the server in a real app. 
 			course.id = _generateId(course);
-			courses.push(course);
+			courses.push(_clone(course));
 		}
-
-		return _clone(course);
+		return course;
 	},
 
 	deleteCourse: function(id) {
-		console.log('Pretend this just deleted the course from the DB via an AJAX call...');
+		console.log('Imagine deleting course with id of ' + id + ' via AJAX call...');
 		_.remove(courses, { id: id});
 	}
 };
