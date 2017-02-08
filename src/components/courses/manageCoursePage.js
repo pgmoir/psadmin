@@ -5,6 +5,7 @@ var Router = require('react-router');
 var CourseForm = require('./courseForm');
 var CourseActions = require('../../actions/courseActions');
 var CourseStore = require('../../stores/courseStore');
+var AuthorStore = require('../../stores/authorStore');
 var toastr = require('toastr');
 var _ = require('lodash');
 
@@ -21,13 +22,10 @@ var ManageCoursePage = React.createClass({
         }
     },
 
-    getAuthors: function() {
-        return [{firstName: "Phil", lastName: "Moir", id: "phil-moir"}, {firstName: "Cory", lastName: "House", id: "cory-house"}];
-    },
-
     getInitialState: function() {
         return {
-            course: { id: '', title: '', author: '', category: '', length: '', authors: this.getAuthors()},
+            course: { id: '', title: '', author: '', category: '', length: ''},
+            authors: AuthorStore.getAllAuthors(),
             errors: {},
             dirty: false
         };  
@@ -36,9 +34,7 @@ var ManageCoursePage = React.createClass({
     componentWillMount: function() {
         var courseId = this.props.params.id; // from the path course courseId
         if (courseId) {
-            var course = CourseStore.getCourseById(courseId);
-            course.authors = this.getAuthors();
-            this.setState({course: course});
+            this.setState({course: CourseStore.getCourseById(courseId)});
         }
     },
 
@@ -47,7 +43,7 @@ var ManageCoursePage = React.createClass({
         this.state.errors = {}; // clear errors
 
         if (this.state.course.title.length < 5) {
-            this.state.errors.title = 'Tit must be at least 5 characters.';
+            this.state.errors.title = 'Title must be at least 5 characters.';
             formIsValid = false;
         }
 
@@ -64,7 +60,7 @@ var ManageCoursePage = React.createClass({
     },
 
     getCourseWithAuthor: function() {
-        var author = _.find(this.state.course.authors, {id: this.state.course.authorId});
+        var author = _.find(this.state.authors, {id: this.state.course.authorId});
         var course = this.state.course;
         course.author = { id: author.id, name: author.firstName + ' ' + author.lastName };
         return course;
@@ -93,6 +89,7 @@ var ManageCoursePage = React.createClass({
         return (
             <CourseForm 
                 course={this.state.course} 
+                authors={this.state.authors}
                 onChange={this.setCourseState}
                 onSave={this.saveCourse} 
                 errors={this.state.errors} />

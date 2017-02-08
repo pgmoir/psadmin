@@ -7,6 +7,7 @@ var Select = require('../common/textSelect');
 var CourseForm = React.createClass({
     propTypes: {
         course: React.PropTypes.object.isRequired,
+        authors: React.PropTypes.array.isRequired,
         onSave: React.PropTypes.func.isRequired,
         onChange: React.PropTypes.func.isRequired,
         errors: React.PropTypes.object
@@ -26,7 +27,7 @@ var CourseForm = React.createClass({
                 <Select name="authorId"
                     label="Author"
                     value={this.props.course.author.id}
-                    options={this.props.course.authors}
+                    options={this.props.authors.unshift({id: '', firstName: 'Please select an author', lastName: ''})}
                     onChange={this.props.onChange}
                     error={this.props.errors.authorId} />
 

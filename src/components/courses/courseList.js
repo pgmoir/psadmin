@@ -14,7 +14,7 @@ var CourseList = React.createClass({
     deleteCourse: function(id, event) {
         event.preventDefault();
         CourseActions.deleteCourse(id);
-        toastr.success('Course Deleted');
+        toastr.success('Course deleted');
     },
 
     render: function() {

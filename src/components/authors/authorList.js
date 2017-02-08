@@ -14,7 +14,7 @@ var AuthorList = React.createClass({
     deleteAuthor: function(id, event) {
         event.preventDefault();
         AuthorActions.deleteAuthor(id);
-        toastr.success('Author Deleted');
+        toastr.success('Author deleted');
     },
 
     render: function() {
