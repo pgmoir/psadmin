@@ -51711,7 +51711,7 @@ var Select = React.createClass({displayName: "Select",
     render: function() {
         var createOption = function(option) {
             return (
-                React.createElement("option", {value: option.value}, option.firstName, " ", option.lastName)
+                React.createElement("option", {value: option.id}, option.firstName, " ", option.lastName)
             );
         };
 

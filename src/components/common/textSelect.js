@@ -16,7 +16,7 @@ var Select = React.createClass({
     render: function() {
         var createOption = function(option) {
             return (
-                <option value={option.value}>{option.firstName} {option.lastName}</option>
+                <option value={option.id}>{option.firstName} {option.lastName}</option>
             );
         };
 
