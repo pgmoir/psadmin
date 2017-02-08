@@ -25,7 +25,7 @@ var AuthorActions = {
 
     updateAuthor: function(author) {
         var updatedAuthor = AuthorApi.saveAuthor(author);
-        // Hey disaptcher, go tell all the stores that an author was just created
+        // Hey disaptcher, go tell all the stores that an author was just updated
         Dispatcher.dispatch({
             actionType: ActionTypes.UPDATE_AUTHOR,
             author: updatedAuthor
